@@ -64,7 +64,7 @@ public class InputManager : MonoBehaviour {
     }
 
 
-    private Vector2 GetCursorPosition()
+    public Vector2 GetCursorPosition()
     {
         return Input.mousePosition;
     }
