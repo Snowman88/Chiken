@@ -34,13 +34,13 @@ public class CharacterMove : MonoBehaviour {
 
     public AnimationClip idleAnim;
     public AnimationClip runAnim;
+
+    float walkTime = 0.0f;
 	
 	// Use this for initialization
 	void Start () {
 		characterController = GetComponent<CharacterController>();
 		destination = transform.position;
-        //animation.Play(runAnim.name);
-        //Debug.Log(animation.clip.name);
 	}
 	
 	// Update is called once per frame
@@ -69,17 +69,25 @@ public class CharacterMove : MonoBehaviour {
             if (arrived)
             {
                 velocity = Vector3.zero;
-                animation.Play(idleAnim.name);
+
+                animation.Play("walk");
+                if (walkTime > 0.7f)
+                    animation.Play(idleAnim.name);
+                walkTime += Time.deltaTime;
+                //Debug.Log(walkTime);
+			
             }
             else
             {
+                walkTime = 0.0f;
                 velocity = direction * walkSpeed;
                 if (animation.clip.name != runAnim.name)
                 {
                     animation.Play(runAnim.name);
                 }
             }
-			
+
+            
 			
 			// スムーズに補間.
 			velocity = Vector3.Lerp(currentVelocity, velocity,Mathf.Min (Time.deltaTime * 5.0f ,1.0f));
