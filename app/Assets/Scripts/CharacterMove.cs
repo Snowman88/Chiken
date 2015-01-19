@@ -31,13 +31,16 @@ public class CharacterMove : MonoBehaviour {
 	
 	// 回転速度.
 	public float rotationSpeed = 360.0f;
-	
-	
+
+    public AnimationClip idleAnim;
+    public AnimationClip runAnim;
 	
 	// Use this for initialization
 	void Start () {
 		characterController = GetComponent<CharacterController>();
 		destination = transform.position;
+        //animation.Play(runAnim.name);
+        //Debug.Log(animation.clip.name);
 	}
 	
 	// Update is called once per frame
@@ -63,10 +66,19 @@ public class CharacterMove : MonoBehaviour {
 			
 			
 			// 移動速度を求める.
-			if (arrived)
-				velocity = Vector3.zero;
-			else 
-				velocity = direction * walkSpeed;
+            if (arrived)
+            {
+                velocity = Vector3.zero;
+                animation.Play(idleAnim.name);
+            }
+            else
+            {
+                velocity = direction * walkSpeed;
+                if (animation.clip.name != runAnim.name)
+                {
+                    animation.Play(runAnim.name);
+                }
+            }
 			
 			
 			// スムーズに補間.
