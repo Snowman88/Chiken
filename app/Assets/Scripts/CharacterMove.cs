@@ -35,7 +35,6 @@ public class CharacterMove : MonoBehaviour {
     public AnimationClip idleAnim;
     public AnimationClip runAnim;
 
-    float walkTime = 0.0f;
 	
 	// Use this for initialization
 	void Start () {
@@ -69,17 +68,10 @@ public class CharacterMove : MonoBehaviour {
             if (arrived)
             {
                 velocity = Vector3.zero;
-
-                animation.Play("walk");
-                if (walkTime > 0.7f)
-                    animation.Play(idleAnim.name);
-                walkTime += Time.deltaTime;
-                //Debug.Log(walkTime);
-			
+                animation.Play(idleAnim.name);
             }
             else
             {
-                walkTime = 0.0f;
                 velocity = direction * walkSpeed;
                 if (animation.clip.name != runAnim.name)
                 {
@@ -90,7 +82,7 @@ public class CharacterMove : MonoBehaviour {
             
 			
 			// スムーズに補間.
-			velocity = Vector3.Lerp(currentVelocity, velocity,Mathf.Min (Time.deltaTime * 5.0f ,1.0f));
+			velocity = Vector3.Lerp(currentVelocity, velocity,Mathf.Min (Time.deltaTime * 45.0f ,1.0f));
 			velocity.y = 0;
 			
 			
