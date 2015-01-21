@@ -16,6 +16,11 @@ public class InputManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (Input.GetMouseButtonDown(1))
+            rightClicked = true;
+        else
+            rightClicked = false;
+
 	    // スライド開始地点
         if (Input.GetButtonDown("Fire1"))
             slideStartPosition = GetCursorPosition();
@@ -68,4 +73,6 @@ public class InputManager : MonoBehaviour {
     {
         return Input.mousePosition;
     }
+
+    public bool rightClicked { get; set; }
 }

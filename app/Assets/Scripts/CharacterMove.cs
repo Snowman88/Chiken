@@ -68,14 +68,16 @@ public class CharacterMove : MonoBehaviour {
             if (arrived)
             {
                 velocity = Vector3.zero;
-                animation.Play(idleAnim.name);
+                if (!animation.IsPlaying("attack"))
+                    animation.Play(idleAnim.name);
             }
             else
             {
                 velocity = direction * walkSpeed;
                 if (animation.clip.name != runAnim.name)
                 {
-                    animation.Play(runAnim.name);
+                    if(!animation.IsPlaying("attack"))
+                        animation.Play(runAnim.name);
                 }
             }
 
