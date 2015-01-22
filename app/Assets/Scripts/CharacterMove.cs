@@ -35,11 +35,13 @@ public class CharacterMove : MonoBehaviour {
     public AnimationClip idleAnim;
     public AnimationClip runAnim;
 
+    public InputManager inputManger;
 	
 	// Use this for initialization
 	void Start () {
 		characterController = GetComponent<CharacterController>();
 		destination = transform.position;
+        inputManger = FindObjectOfType<InputManager>();
 	}
 	
 	// Update is called once per frame
@@ -63,12 +65,18 @@ public class CharacterMove : MonoBehaviour {
 			if (arrived || distance < StoppingDistance)
 				arrived = true;
 			
-			
+			// jump
+            if (inputManger.Jumped)
+            {
+                animation.Play("jump");
+            }
+            
+
 			// 移動速度を求める.
             if (arrived)
             {
                 velocity = Vector3.zero;
-                if (!animation.IsPlaying("attack"))
+                if (!animation.IsPlaying("attack") && !animation.IsPlaying("jump"))
                     animation.Play(idleAnim.name);
             }
             else
@@ -76,7 +84,7 @@ public class CharacterMove : MonoBehaviour {
                 velocity = direction * walkSpeed;
                 if (animation.clip.name != runAnim.name)
                 {
-                    if(!animation.IsPlaying("attack"))
+                    if (!animation.IsPlaying("attack") && !animation.IsPlaying("jump"))
                         animation.Play(runAnim.name);
                 }
             }

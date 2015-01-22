@@ -21,6 +21,11 @@ public class InputManager : MonoBehaviour {
         else
             rightClicked = false;
 
+        if (Input.GetKeyDown(KeyCode.Space))
+            Jumped = true;
+        else
+            Jumped = false;
+
 	    // スライド開始地点
         if (Input.GetButtonDown("Fire1"))
             slideStartPosition = GetCursorPosition();
@@ -75,4 +80,6 @@ public class InputManager : MonoBehaviour {
     }
 
     public bool rightClicked { get; set; }
+
+    public bool Jumped { get; set; }
 }
