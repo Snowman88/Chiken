@@ -16,15 +16,15 @@ public class InputManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetMouseButtonDown(1))
-            rightClicked = true;
-        else
-            rightClicked = false;
+        //if (Input.GetMouseButtonDown(1))
+        //    rightClicked = true;
+        //else
+        //    rightClicked = false;
 
-        if (Input.GetKeyDown(KeyCode.Space))
-            Jumped = true;
-        else
-            Jumped = false;
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //    Jumped = true;
+        //else
+        //    Jumped = false;
 
 	    // スライド開始地点
         if (Input.GetButtonDown("Fire1"))
@@ -79,7 +79,7 @@ public class InputManager : MonoBehaviour {
         return Input.mousePosition;
     }
 
-    public bool rightClicked { get; set; }
+    //public bool rightClicked { get; set; }
 
-    public bool Jumped { get; set; }
+    //public bool Jumped { get; set; }
 }

@@ -12,11 +12,11 @@ public class PlayerAttackCtrl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (inputManager.rightClicked)
-        {
-            if(animation.clip.name == attackAnim.name)
-                return;
-            animation.Play(attackAnim.name);
-        }
+        //if (inputManager.rightClicked)
+        //{
+        //    if(animation.clip.name == attackAnim.name)
+        //        return;
+        //    animation.Play(attackAnim.name);
+        //}
 	}
 }

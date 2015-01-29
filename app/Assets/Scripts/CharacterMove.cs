@@ -32,8 +32,8 @@ public class CharacterMove : MonoBehaviour {
 	// 回転速度.
 	public float rotationSpeed = 360.0f;
 
-    public AnimationClip idleAnim;
-    public AnimationClip runAnim;
+    //public AnimationClip idleAnim;
+    //public AnimationClip runAnim;
 
     public InputManager inputManger;
 	
@@ -65,28 +65,28 @@ public class CharacterMove : MonoBehaviour {
 			if (arrived || distance < StoppingDistance)
 				arrived = true;
 			
-			// jump
-            if (inputManger.Jumped)
-            {
-                animation.Play("jump");
-            }
+            //// jump
+            //if (inputManger.Jumped)
+            //{
+            //    animation.Play("jump");
+            //}
             
 
 			// 移動速度を求める.
             if (arrived)
             {
                 velocity = Vector3.zero;
-                if (!animation.IsPlaying("attack") && !animation.IsPlaying("jump"))
-                    animation.Play(idleAnim.name);
+                //if (!animation.IsPlaying("attack") && !animation.IsPlaying("jump"))
+                //    animation.Play(idleAnim.name);
             }
             else
             {
                 velocity = direction * walkSpeed;
-                if (animation.clip.name != runAnim.name)
-                {
-                    if (!animation.IsPlaying("attack") && !animation.IsPlaying("jump"))
-                        animation.Play(runAnim.name);
-                }
+                //if (animation.clip.name != runAnim.name)
+                //{
+                //    if (!animation.IsPlaying("attack") && !animation.IsPlaying("jump"))
+                //        animation.Play(runAnim.name);
+                //}
             }
 
             
